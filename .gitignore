@@ -18,5 +18,11 @@
 # vendor/
 .idea
 
+jsonInput.json
+jsonOutput.json
+
+yamlInput.yml
+yamlOutput.yml
+
 # Go workspace file
 go.work
