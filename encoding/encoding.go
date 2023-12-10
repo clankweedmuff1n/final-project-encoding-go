@@ -28,16 +28,15 @@ type MyEncoder interface {
 
 // Encoding перекодирует файл из JSON в YAML
 func (j *JSONData) Encoding() error {
-	var dockerCompose models.DockerCompose
 	jsonFile, err := os.ReadFile(j.FileInput)
 	if err != nil {
 		return err
 	}
-	err = json.Unmarshal(jsonFile, &dockerCompose)
+	err = json.Unmarshal(jsonFile, &j.DockerCompose)
 	if err != nil {
 		return err
 	}
-	yamlFile, err := yaml.Marshal(&dockerCompose)
+	yamlFile, err := yaml.Marshal(&j.DockerCompose)
 	if err != nil {
 		return err
 	}
@@ -50,16 +49,15 @@ func (j *JSONData) Encoding() error {
 
 // Encoding перекодирует файл из YAML в JSON
 func (y *YAMLData) Encoding() error {
-	var dockerCompose models.DockerCompose
 	yamlFile, err := os.ReadFile(y.FileInput)
 	if err != nil {
 		return err
 	}
-	err = yaml.Unmarshal(yamlFile, &dockerCompose)
+	err = yaml.Unmarshal(yamlFile, &y.DockerCompose)
 	if err != nil {
 		return err
 	}
-	jsonFile, err := json.Marshal(&dockerCompose)
+	jsonFile, err := json.Marshal(&y.DockerCompose)
 	if err != nil {
 		return err
 	}
